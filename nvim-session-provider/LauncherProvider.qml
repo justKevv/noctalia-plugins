@@ -257,11 +257,15 @@ Item {
         const nvim = (pluginApi.pluginSettings.nvim || pluginApi.manifest.metadata.defaultSettings.nvim).split(" ");
         if(runInTerminal) {
             const terminal = Settings.data.appLauncher.terminalCommand.split(" ");
-            const command = terminal.concat(nvim, "-S", entry.fullPath);
+            const command = terminal.concat(nvim, "-S", enquote(entry.fullPath));
             Quickshell.execDetached(command);
         } else {
             Quickshell.execDetached(nvim.concat("-S", entry.fullPath));
         }
+    }
+
+    function enquote(text: string): string {
+        return "'" + text.replace(/'/g, "'\\''") + "'";
     }
 
 }
