@@ -355,20 +355,20 @@
     },
     {
       "id": "mangowc-layout-switcher",
-      "name": "Mangowc Layout Switcher",
-      "version": "1.1.4",
+      "name": "mango layout switcher",
+      "version": "2.0.0",
       "official": false,
       "author": "atheeq-rhxn",
       "description": "Switch between different mangowc layouts",
       "repository": "https://github.com/noctalia-dev/noctalia-plugins",
-      "minNoctaliaVersion": "3.6.0",
+      "minNoctaliaVersion": "4.1.2",
       "license": "MIT",
       "tags": [
         "Bar",
         "Panel",
         "MangoWC"
       ],
-      "lastUpdated": "2026-02-28T01:32:51+05:30"
+      "lastUpdated": "2026-03-04T01:40:49+05:30"
     },
     {
       "id": "mawaqit",
@@ -523,6 +523,24 @@
       "lastUpdated": "2026-02-22T10:29:46+02:00"
     },
     {
+      "id": "niri-auto-tile",
+      "name": "Niri Auto-Tile",
+      "version": "1.2.0",
+      "official": false,
+      "author": "pir0c0pter0",
+      "description": "Automatically redistributes niri column widths evenly when windows open or close",
+      "repository": "https://github.com/noctalia-dev/noctalia-plugins",
+      "minNoctaliaVersion": "4.4.0",
+      "license": "MIT",
+      "tags": [
+        "Bar",
+        "Utility",
+        "System",
+        "Niri"
+      ],
+      "lastUpdated": "2026-03-04T12:34:01-05:00"
+    },
+    {
       "id": "niri-overview-launcher",
       "name": "Niri Overview Launcher",
       "version": "1.0.0",
@@ -570,6 +588,22 @@
         "Productivity"
       ],
       "lastUpdated": "2026-03-02T14:23:16+07:00"
+    },
+    {
+      "id": "nvim-session-provider",
+      "name": "Neovim Session Provider",
+      "version": "1.0.0",
+      "official": false,
+      "author": "Krendil",
+      "description": "Open Neovim Sessions",
+      "repository": "https://github.com/noctalia-dev/noctalia-plugins",
+      "minNoctaliaVersion": "4.5.0",
+      "license": "MIT",
+      "tags": [
+        "Launcher",
+        "Development"
+      ],
+      "lastUpdated": "2026-03-04T14:58:33+10:00"
     },
     {
       "id": "openhue",
@@ -712,6 +746,23 @@
         "Productivity"
       ],
       "lastUpdated": "2026-01-26T23:59:29-05:00"
+    },
+    {
+      "id": "special-workspaces",
+      "name": "Special Workspaces (Hyprland)",
+      "version": "1.0.0",
+      "official": false,
+      "author": "Qholin",
+      "description": "Configurable Hyprland special workspaces indicator for the bar.",
+      "repository": "https://github.com/qholin/noctalia-special-workspaces/",
+      "minNoctaliaVersion": "4.4.0",
+      "license": "MIT",
+      "tags": [
+        "Bar",
+        "Productivity",
+        "Hyprland"
+      ],
+      "lastUpdated": "2026-03-04T20:05:47+03:00"
     },
     {
       "id": "steam-price-watcher",
