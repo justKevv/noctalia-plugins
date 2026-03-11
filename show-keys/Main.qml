@@ -121,7 +121,7 @@ Item {
     readonly property var specialMap: ({
         "BACKSPACE":"󰁮",  "ENTER":"󰌑",   "ESC":"󱊷",
         "SPACE":"󱁐",      "TAB":"󰌒",     "DELETE":"󰆴",
-        "UP":"",          "DOWN":"",     "LEFT":"",    "RIGHT":"",
+        "UP":"↑",         "DOWN":"↓",    "LEFT":"←",   "RIGHT":"→",
         "HOME":"Home",    "END":"End",
         "PAGEUP":"PgUp",  "PAGEDOWN":"PgDn",
         "INSERT":"Ins",   "CAPSLOCK":"Caps",
