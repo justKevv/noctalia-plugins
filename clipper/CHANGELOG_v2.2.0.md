@@ -42,7 +42,7 @@
 - Might be - please report if there are bugs
 
 ## Known Issues
-- None
+- After adding a clipboard into ToDo plugin you can't check the complete box or remove that clipboard from ToDo
 
 ## Upgrade Notes
 - Plugin will automatically migrate settings
