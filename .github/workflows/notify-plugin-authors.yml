@@ -103,5 +103,13 @@ jobs:
             comment_body="${author_mentions}- this PR modifies your plugins. Please review when you have a chance."
           fi
           
-          # Post comment using gh CLI
-          gh pr comment "$PR_NUMBER" --body "$comment_body"
+          # Check if the bot has already commented to stop spam
+          commented_already=$(gh pr view "$PR_NUMBER" --json comments \
+            --jq "[.comments[] | select(.author.login == \"github-actions[bot]\")] | length")
+          
+          if [[ commented_already -eq 0 ]]; then
+            # Post comment using gh CLI
+            gh pr comment "$PR_NUMBER" --body "$comment_body"
+          else
+            echo "Already commented so skip commenting again."
+          fi
