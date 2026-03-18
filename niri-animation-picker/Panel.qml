@@ -258,71 +258,60 @@ Item {
                 }
 
                 // Files
-                Flickable {
+                NListView {
                     anchors { fill: parent; margins: Style.marginS }
                     visible: !root.loading && root.kdlFiles.length > 0
-                    clip: true
-                    contentHeight: fileList.contentHeight
+                    model: root.kdlFiles
+                    gradientColor: Qt.rgba(Color.mSurfaceVariant.r, Color.mSurfaceVariant.g, Color.mSurfaceVariant.b, 0.5)
 
-                    ListView {
-                        id: fileList
-                        anchors.fill: parent
-                        model: root.kdlFiles
-                        spacing: Style.marginXS
-                        clip: true
-                        interactive: false
+                    delegate: Rectangle {
+                        id: fileRow
+                        width: ListView.view.width
+                        height: 52 * Style.uiScaleRatio
+                        property bool isActive: modelData === root.activeFile
+                        property bool isHovered: false
 
-                        delegate: Rectangle {
-                            id: fileRow
-                            width: fileList.width
-                            height: 52 * Style.uiScaleRatio
-                            property bool isActive: modelData === root.activeFile
-                            property bool isHovered: false
+                        color: isActive
+                            ? Qt.rgba(Color.mPrimary.r, Color.mPrimary.g, Color.mPrimary.b, 0.18)
+                            : isHovered ? Color.mSurface : "transparent"
+                        radius: Style.radiusM
+                        Behavior on color { ColorAnimation { duration: 100 } }
 
-                            color: isActive
-                                ? Qt.rgba(Color.mPrimary.r, Color.mPrimary.g, Color.mPrimary.b, 0.18)
-                                : isHovered ? Color.mSurface : "transparent"
-                            radius: Style.radiusM
-                            Behavior on color { ColorAnimation { duration: 100 } }
+                        RowLayout {
+                            anchors { fill: parent; leftMargin: Style.marginM; rightMargin: Style.marginM }
+                            spacing: Style.marginM
 
-                            RowLayout {
-                                anchors { fill: parent; leftMargin: Style.marginM; rightMargin: Style.marginM }
-                                spacing: Style.marginM
-
-                                Rectangle {
-                                    width: 3; height: parent.height * 0.5; radius: 2
-                                    color: Color.mPrimary
-                                    opacity: fileRow.isActive ? 1 : 0
-                                    Behavior on opacity { NumberAnimation { duration: 150 } }
-                                }
-
-                                NText {
-                                    text: modelData
-                                    color: fileRow.isActive ? Color.mPrimary : Color.mOnSurface
-                                    pointSize: Style.fontSizeM
-                                    font.weight: fileRow.isActive ? 600 : 400
-                                    Layout.fillWidth: true
-                                    elide: Text.ElideRight
-                                }
-
-                                NIcon {
-                                    icon: root.writing && root.pendingFile === modelData ? "loader" : "check"
-                                    color: Color.mPrimary; pointSize: Style.fontSizeM
-                                    opacity: fileRow.isActive || (root.writing && root.pendingFile === modelData) ? 1 : 0
-                                    Behavior on opacity { NumberAnimation { duration: 150 } }
-                                }
+                            Rectangle {
+                                width: 3; height: parent.height * 0.5; radius: 2
+                                color: Color.mPrimary
+                                opacity: fileRow.isActive ? 1 : 0
+                                Behavior on opacity { NumberAnimation { duration: 150 } }
                             }
 
-                            MouseArea {
-                                anchors.fill: parent
-                                hoverEnabled: true
-                                cursorShape: Qt.PointingHandCursor
-                                onEntered: fileRow.isHovered = true
-                                onExited:  fileRow.isHovered = false
-                                onClicked: {
-                                    if (!root.writing) root.applyFile(modelData)
-                                }
+                            NText {
+                                text: modelData
+                                color: fileRow.isActive ? Color.mPrimary : Color.mOnSurface
+                                pointSize: Style.fontSizeM
+                                font.weight: fileRow.isActive ? 600 : 400
+                                Layout.fillWidth: true
+                                elide: Text.ElideRight
                             }
+
+                            NIcon {
+                                icon: root.writing && root.pendingFile === modelData ? "loader" : "check"
+                                color: Color.mPrimary; pointSize: Style.fontSizeM
+                                opacity: fileRow.isActive || (root.writing && root.pendingFile === modelData) ? 1 : 0
+                                Behavior on opacity { NumberAnimation { duration: 150 } }
+                            }
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            cursorShape: Qt.PointingHandCursor
+                            onEntered: fileRow.isHovered = true
+                            onExited:  fileRow.isHovered = false
+                            onClicked: { if (!root.writing) root.applyFile(modelData) }
                         }
                     }
                 }
