@@ -736,7 +736,7 @@
     {
       "id": "nvim-session-provider",
       "name": "Neovim Session Provider",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "official": false,
       "author": "Krendil",
       "description": "Open Neovim Sessions",
@@ -747,7 +747,7 @@
         "Launcher",
         "Development"
       ],
-      "lastUpdated": "2026-03-05T13:10:48+10:00"
+      "lastUpdated": "2026-03-21T21:19:00+01:00"
     },
     {
       "id": "obs-control",
