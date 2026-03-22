@@ -8,7 +8,7 @@ It allows you to quickly jot down thoughts, code snippets, and to-do lists in be
 
 ## 📸 Screenshots
 
-<img src="screenshot.png" width="350" title="sticky notes">
+<img src="screenshot.png" width="350" title="sticky notes" alt="">
 
 ---
 
@@ -33,10 +33,10 @@ It allows you to quickly jot down thoughts, code snippets, and to-do lists in be
 - **Data Tables**: Standard GFM (GitHub Flavored Markdown) structured tables with alignment:
   ```markdown
   | Option | Description |
-  | :--- | ---: |
+  | :--- | ---:  |
   | Left | Right |
   ```
 - **Horizontal Rules**: Supports `---`, `***`, and `___`.
-- **Backslash Escapes**: Prevents rendering of literal markdown characters `\*`, `\` etc.
+- **Backslash Escapes**: Prevents rendering of literal Markdown characters `\*`, `\` etc.
 
 ---
