@@ -68,6 +68,15 @@ openSUSE:
 sudo zypper install grim slurp wl-clipboard tesseract-ocr tesseract-ocr-traineddata-english ImageMagick zbar curl translate-shell wf-recorder ffmpeg
 cargo install gifski
 
+NixOS:
+Add to your configuration.nix or home.nix:
+environment.systemPackages = with pkgs; [
+  grim slurp wl-clipboard tesseract imagemagick zbar curl
+  translate-shell wf-recorder ffmpeg gifski
+];
+
+For additional OCR languages, use e.g. (pkgs.tesseract.override { enableLanguages = [ "eng" "deu" ]; })
+
 Compatibility:
 Tested on Hyprland and Niri.
 
