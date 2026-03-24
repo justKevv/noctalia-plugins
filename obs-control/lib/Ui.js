@@ -127,7 +127,8 @@ function shouldShowInBar(state, settings) {
   }
 
   return Boolean(
-    (state.recording && settings.showBarWhenRecording)
+    settings.alwaysShowInBar
+    || (state.recording && settings.showBarWhenRecording)
     || (state.replayBuffer && settings.showBarWhenReplay)
     || (state.streaming && settings.showBarWhenStreaming)
   )
@@ -158,14 +159,7 @@ function primaryActionText(pluginApi, leftClickAction) {
   return translate(pluginApi, "actions.primary.open_controls")
 }
 
-function barTooltip(pluginApi, state, primaryActionLabel) {
-  return translate(pluginApi, "bar.tooltip.active", {
-    outputs: activeOutputSummary(pluginApi, state, ", "),
-    primaryAction: primaryActionLabel,
-  })
-}
-
-function controlCenterTooltip(pluginApi, state, connected, obsRunning, primaryActionLabel) {
+function quickActionTooltip(pluginApi, state, connected, obsRunning, primaryActionLabel) {
   if (hasActiveOutputs(state)) {
     return translate(pluginApi, "control_center.tooltip.active", {
       outputs: activeOutputSummary(pluginApi, state, ", "),

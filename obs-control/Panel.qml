@@ -11,7 +11,6 @@ Item {
 
   readonly property var geometryPlaceholder: panelContainer
   readonly property var service: root.pluginApi?.mainInstance
-  readonly property string obsLogoSource: root.pluginApi ? `file://${root.pluginApi.pluginDir}/assets/obs-logo.svg` : ""
   readonly property bool obsRunning: root.service?.obsRunning ?? false
   readonly property bool websocket: root.service?.websocket ?? false
   readonly property bool recording: root.service?.recording ?? false
@@ -33,6 +32,7 @@ Item {
     recordDurationMs: root.recordDurationMs,
     streamDurationMs: root.streamDurationMs,
   })
+  readonly property string headerIconName: Ui.primaryIcon(root.outputState) || "camera-video"
 
   readonly property color statusAccentColor: Ui.accentBackgroundColor(root.outputState, Color, Color.mOnSurface)
 
@@ -56,16 +56,11 @@ Item {
         Layout.fillWidth: true
         spacing: Style.marginM
 
-        Image {
-          source: root.obsLogoSource
-          sourceSize.width: Math.round(Style.fontSizeXXL * 1.8)
-          sourceSize.height: Math.round(Style.fontSizeXXL * 1.8)
-          width: Math.round(Style.fontSizeXXL * 1.8)
-          height: Math.round(Style.fontSizeXXL * 1.8)
-          fillMode: Image.PreserveAspectFit
-          smooth: true
-          mipmap: true
-          asynchronous: true
+        NIcon {
+          icon: root.headerIconName
+          pointSize: Math.round(Style.fontSizeXXL * 1.4)
+          color: root.recording ? Color.mError : Color.mPrimary
+          Layout.alignment: Qt.AlignTop
         }
 
         ColumnLayout {
@@ -85,6 +80,13 @@ Item {
             color: Color.mOnSurfaceVariant
             text: Ui.panelHeaderText(root.pluginApi, root.outputState, root.connected, root.obsRunning, root.websocketSupportMissing, root.websocketConfigMissing)
           }
+        }
+
+        NIconButton {
+          icon: "settings"
+          tooltipText: root.pluginApi?.tr("panel.actions.open_settings") ?? ""
+          Layout.alignment: Qt.AlignTop
+          onClicked: root.service?.openSettingsForCurrentContext()
         }
       }
 

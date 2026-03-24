@@ -9,10 +9,7 @@
   "bar": {
     "recording_label": "REC",
     "replay_label": "RPL",
-    "streaming_label": "LIVE",
-    "tooltip": {
-      "active": "OBS active: {outputs}\nLeft click {primaryAction}\nRight click toggles recording\nMiddle click toggles the replay buffer"
-    }
+    "streaming_label": "LIVE"
   },
   "control_center": {
     "tooltip": {
@@ -61,25 +58,46 @@
       "start_replay": "Start Replay",
       "save_replay": "Save Replay",
       "open_videos": "Open Videos",
-      "refresh_status": "Refresh Status"
+      "refresh_status": "Refresh Status",
+      "open_settings": "Open Settings"
     }
   },
   "settings": {
     "header": {
       "label": "OBS Control",
-      "description": "Control how often the plugin polls OBS, how it launches OBS, and when recording, replay, or streaming state appears in the shell."
+      "description": "Choose how OBS appears in the bar, Control Center, and quick actions."
+    },
+    "sections": {
+      "behavior": {
+        "label": "Quick Actions",
+        "description": "Set what clicks do and how OBS launches when you ask the plugin to open it."
+      },
+      "bar": {
+        "label": "Bar",
+        "description": "Keep Always Show enabled if you want the OBS button to stay in the same spot all the time."
+      },
+      "control_center": {
+        "label": "Control Center",
+        "description": "Choose when the shortcut should appear. Leave Ready off if you only want it during active sessions."
+      },
+      "videos": {
+        "label": "Videos & Automation",
+        "description": "Choose where recordings open and what the plugin should do after capture stops."
+      }
     },
     "runtime": {
-      "qt_websockets_missing": "Qt WebSockets support is unavailable in this Quickshell runtime. Install qt6-websockets and restart Noctalia to enable OBS controls.",
-      "websocket_config_missing": "OBS websocket config is missing or disabled. Open OBS, enable obs-websocket, then refresh or restart Noctalia."
+      "qt_websockets_missing_title": "Qt WebSockets Missing",
+      "qt_websockets_missing": "Install qt6-websockets and restart Noctalia to enable OBS control.",
+      "websocket_config_missing_title": "OBS WebSocket Not Configured",
+      "websocket_config_missing": "Enable obs-websocket in OBS, then refresh or restart Noctalia."
     },
     "poll_interval": {
-      "label": "Poll Interval",
-      "description": "How often the plugin refreshes OBS state, in milliseconds."
+      "label": "Refresh Interval",
+      "description": "How often to refresh OBS state, in milliseconds."
     },
     "left_click_action": {
-      "label": "Left Click Action",
-      "description": "Choose whether left click opens the panel or toggles recording or streaming directly.",
+      "label": "Left Click",
+      "description": "Pick the primary action for the bar and Control Center button.",
       "options": {
         "open_controls": "Open Controls",
         "toggle_recording": "Toggle Recording",
@@ -87,16 +105,16 @@
       }
     },
     "launch_behavior": {
-      "label": "Launch Behavior",
-      "description": "Choose how the explicit Launch OBS action opens OBS. Automatic recording, replay, or streaming starts still launch minimized to the tray.",
+      "label": "Launch OBS",
+      "description": "Only used for the manual Launch OBS action. Automatic starts still open minimized to tray.",
       "options": {
         "normal": "Normal Window",
         "minimized_to_tray": "Minimize To Tray"
       }
     },
     "bar_label_mode": {
-      "label": "Bar Label Mode",
-      "description": "Choose how the bar indicator renders active OBS outputs.",
+      "label": "Label Style",
+      "description": "Choose how active OBS states appear in the bar.",
       "options": {
         "icon_only": "Icon Only",
         "short_label": "Short Labels",
@@ -104,52 +122,56 @@
       }
     },
     "videos_path": {
-      "label": "Videos Path",
-      "description": "Optional custom folder used by the panel and the toast action. Leave empty to use your default Videos directory."
+      "label": "Videos Folder",
+      "description": "Leave empty to use your default Videos directory."
     },
     "videos_opener": {
-      "label": "Videos Opener",
-      "description": "Command used to open the Videos folder. Set this to your GUI file manager if xdg-open resolves to a terminal opener."
+      "label": "Folder Opener",
+      "description": "Command used to open the Videos folder, for example xdg-open or your file manager."
     },
     "auto_close_managed": {
-      "label": "Auto-Close Managed OBS",
-      "description": "If the plugin had to cold-launch OBS for recording, replay, or streaming, close OBS again after the last active output stops."
+      "label": "Close OBS After Managed Sessions",
+      "description": "If the plugin launched OBS for you, close it again after the last active output stops."
     },
     "open_videos_after_stop": {
-      "label": "Show Open Videos After Stop",
-      "description": "Offer an Open Videos toast action after recording stops or a replay is saved."
+      "label": "Offer Open Videos After Save",
+      "description": "Show an Open Videos action after recording stops or a replay is saved."
     },
     "show_elapsed_in_bar": {
-      "label": "Show Elapsed In Bar",
-      "description": "Allow duration labels in the bar when Bar Label Mode is set to Duration Labels."
+      "label": "Show Elapsed Time",
+      "description": "Show the timer in the bar when Label Style is set to Duration Labels."
     },
     "show_bar_recording": {
-      "label": "Show Bar While Recording",
-      "description": "Display the bar indicator while OBS is actively recording."
+      "label": "While Recording",
+      "description": "Keep the bar button visible during recording."
     },
     "show_bar_replay": {
-      "label": "Show Bar While Replay Is Active",
-      "description": "Keep the bar indicator visible when only the replay buffer is running."
+      "label": "While Replay Is Active",
+      "description": "Keep the bar button visible while only the replay buffer is running."
     },
     "show_bar_streaming": {
-      "label": "Show Bar While Streaming",
-      "description": "Keep the bar indicator visible when OBS is actively streaming."
+      "label": "While Streaming",
+      "description": "Keep the bar button visible during streaming."
+    },
+    "always_show_in_bar": {
+      "label": "Always Show In Bar",
+      "description": "Keep the bar button visible even when OBS is idle or offline so its position stays stable."
     },
     "show_control_center_recording": {
-      "label": "Show Control Center While Recording",
-      "description": "Show the Control Center shortcut while OBS is recording."
+      "label": "While Recording",
+      "description": "Show the Control Center shortcut during recording."
     },
     "show_control_center_replay": {
-      "label": "Show Control Center While Replay Is Active",
+      "label": "While Replay Is Active",
       "description": "Show the Control Center shortcut while the replay buffer is active."
     },
     "show_control_center_streaming": {
-      "label": "Show Control Center While Streaming",
-      "description": "Show the Control Center shortcut while OBS is streaming."
+      "label": "While Streaming",
+      "description": "Show the Control Center shortcut during streaming."
     },
     "show_control_center_ready": {
-      "label": "Show Control Center When OBS Is Ready",
-      "description": "Keep the shortcut visible when OBS is connected but idle."
+      "label": "When OBS Is Ready",
+      "description": "Keep the shortcut visible while OBS is connected but idle."
     }
   },
   "toast": {

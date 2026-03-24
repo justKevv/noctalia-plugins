@@ -765,7 +765,7 @@
         "Indicator",
         "Utility"
       ],
-      "lastUpdated": "2026-03-22T18:34:21+01:00"
+      "lastUpdated": "2026-03-22T22:46:44+01:00"
     },
     {
       "id": "openhue",
@@ -1025,7 +1025,7 @@
     {
       "id": "sticky-notes",
       "name": "Sticky Notes",
-      "version": "0.0.1",
+      "version": "0.0.2",
       "official": false,
       "author": "sapjax",
       "description": "A local quick notes plugin with Markdown support.",
@@ -1037,7 +1037,7 @@
         "Panel",
         "Productivity"
       ],
-      "lastUpdated": "2026-02-23T15:20:02+08:00"
+      "lastUpdated": "2026-03-20T11:04:00+08:00"
     },
     {
       "id": "sys-info-widget",

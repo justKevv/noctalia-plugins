@@ -1,56 +1,59 @@
 # OBS Control
 
-OBS Studio controls for Noctalia Shell. The plugin adds a bar indicator, an optional Control Center shortcut, and a panel for recording, replay, and streaming actions.
+OBS Studio controls for Noctalia Shell.
 
-## Requirements
+OBS Control adds a stable bar button, an optional Control Center shortcut, and a panel for recording, replay buffer, and streaming actions.
 
-Runtime requirements:
+## Quick Start
 
-- `obs-studio`
-- OBS WebSocket enabled in OBS
-- QML `QtWebSockets` support available in the Quickshell runtime
+1. Install `obs-studio`.
+2. Enable OBS WebSocket in OBS.
+3. Install `qt6-websockets` if your Quickshell runtime does not already include Qt WebSockets.
+4. Enable the plugin in Noctalia.
+5. Add `plugin:obs-control` to your bar or Control Center layout.
 
-On Arch Linux, install the Qt WebSockets module explicitly:
-
-```bash
-sudo pacman -S qt6-websockets
-```
-
-If `QtWebSockets` is missing, the plugin shows a clear runtime warning in its settings UI
-
-## Installation
-
-Open Noctalia Settings, go to `Plugins`, search for `OBS Control` in `Available`, and install it.
-
-After enabling it, add `plugin:obs-control` to your bar or Control Center layout if you want the widget visible there.
-
-## Features
-
-- native QML `QtWebSockets` transport for OBS websocket control
-- bar indicator for recording, replay, and streaming states, including combined active outputs
-- optional Control Center shortcut when OBS is active
-- panel with launch, refresh, recording, replay, streaming, save, and open-videos actions
-- clear runtime state when `QtWebSockets` support is missing or OBS websocket is not configured
-- auto-close for OBS when the plugin had to cold-launch it for recording, replay, or streaming and later stops the last active output
-- elapsed recording and streaming timers in the panel
-- configurable manual launch behavior, left-click behavior, bar label mode, toast behavior, and visibility rules
-- native Noctalia toast actions after recording, replay, or stream transitions
-
-## Keyboard Shortcuts
-
-This plugin uses Noctalia IPC for compositor keybinds and external triggers.
-
-Use Noctalia IPC directly from your compositor:
+On Arch Linux:
 
 ```bash
-qs -c noctalia-shell ipc call plugin:obs-control togglePanel
-qs -c noctalia-shell ipc call plugin:obs-control toggleRecord
-qs -c noctalia-shell ipc call plugin:obs-control toggleReplay
-qs -c noctalia-shell ipc call plugin:obs-control toggleStream
-qs -c noctalia-shell ipc call plugin:obs-control saveReplay
+sudo pacman -S obs-studio qt6-websockets
 ```
 
-Example `niri` binds:
+## Highlights
+
+- optional always-visible bar button, so the OBS slot stays in the same place
+- quick panel actions for record, replay, stream, refresh, videos, and settings
+- optional Control Center shortcut
+- OBS launch support with minimize-to-tray behavior for automatic starts
+- auto-close for plugin-managed OBS launches after the last active output stops
+- replay save and open-videos shortcuts
+- Noctalia IPC actions for keybinds and scripts
+
+## IPC
+
+General form:
+
+```bash
+qs -c noctalia-shell ipc call plugin:obs-control <command>
+```
+
+### Commands
+
+| Command | Description |
+| --- | --- |
+| `togglePanel` | Open or close the OBS panel |
+| `openSettings` | Open the plugin settings |
+| `toggleRecord` | Start or stop recording |
+| `toggleReplay` | Start or stop the replay buffer |
+| `toggleStream` | Start or stop streaming |
+| `saveReplay` | Save the current replay buffer |
+| `launchObs` | Launch OBS |
+| `refreshStatus` | Refresh OBS state |
+| `openVideos` | Open the configured videos folder |
+| `primaryAction` | Run the configured left-click action |
+| `secondaryAction` | Run the right-click action |
+| `middleAction` | Run the middle-click action |
+
+Example Niri binds:
 
 ```kdl
 binds {
@@ -62,18 +65,28 @@ binds {
 }
 ```
 
+## Settings
+
+You can open settings from:
+
+- **Plugins → OBS Control → Configure** in Noctalia
+- the **gear button** in the panel header
+- IPC with `qs -c noctalia-shell ipc call plugin:obs-control openSettings`
+
 ## Troubleshooting
 
-- If OBS is running but the plugin says WebSocket control is unavailable, restart OBS once after enabling obs-websocket.
-- If the plugin says `Qt WebSockets support missing`, install `qt6-websockets` and restart Noctalia.
-- If the plugin says OBS websocket is not configured, open OBS, confirm obs-websocket is enabled, then refresh or restart Noctalia. This also covers the case where the OBS websocket server is disabled in OBS.
-- Automatic recording, replay, and stream starts intentionally launch OBS minimized to the tray; the Launch OBS action is the only path that uses the configurable launch behavior.
-- If Open Videos opens a terminal directory handler instead of a GUI file manager, set the Videos Opener setting to your file manager command, for example `nautilus`.
-- If recording, replay, or streaming launched OBS automatically through this plugin, stopping the last active output through the same plugin session will close OBS again for that managed launch.
-- If actions do nothing, test `qs -c noctalia-shell ipc call plugin:obs-control refreshStatus` from a terminal in your session.
+- If OBS is running but control is unavailable, restart OBS once after enabling obs-websocket.
+- If the plugin reports missing Qt WebSockets support, install `qt6-websockets` and restart Noctalia.
+- If OBS WebSocket is disabled, enable it in OBS and then refresh or restart Noctalia.
+- If `xdg-open` opens a terminal file browser, set **Videos Opener** to your GUI file manager.
+- If actions do nothing, try:
+
+```bash
+qs -c noctalia-shell ipc call plugin:obs-control refreshStatus
+```
 
 ## Screenshots
 
-![OBS Control preview](preview.png)
+![OBS Control panel](./preview.png)
 
-![OBS Control settings](./assets/settings.png)
+![OBS Control settings](./settings.png)

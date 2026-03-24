@@ -36,6 +36,7 @@
       "showBarWhenRecording": true,
       "showBarWhenReplay": false,
       "showBarWhenStreaming": true,
+      "showBarWhenReady": true,
       "showControlCenterWhenRecording": true,
       "showControlCenterWhenReplay": true,
       "showControlCenterWhenStreaming": true,

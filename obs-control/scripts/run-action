@@ -26,6 +26,9 @@ case "${1:-}" in
   refresh)
     command="refreshStatus"
     ;;
+  settings|open-settings)
+    command="openSettings"
+    ;;
   open-videos)
     command="openVideos"
     ;;
@@ -42,7 +45,7 @@ case "${1:-}" in
     command="togglePanel"
     ;;
   *)
-    echo "usage: run-action <launch|toggle-record|toggle-replay|toggle-stream|save-replay|refresh|open-videos|primary|secondary|middle|panel>" >&2
+    echo "usage: run-action <launch|toggle-record|toggle-replay|toggle-stream|save-replay|refresh|settings|open-videos|primary|secondary|middle|panel>" >&2
     exit 2
     ;;
 esac

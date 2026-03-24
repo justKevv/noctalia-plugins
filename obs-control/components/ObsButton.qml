@@ -19,7 +19,6 @@ NIconButtonHot {
   readonly property bool streaming: root.service?.streaming ?? false
   readonly property bool connected: root.obsRunning && root.websocket
   readonly property string primaryActionText: root.service?.primaryActionText ?? root.pluginApi?.tr("actions.primary.open_controls") ?? ""
-  readonly property string obsLogoSource: root.pluginApi ? `file://${root.pluginApi.pluginDir}/assets/obs-logo.svg` : ""
   readonly property var outputState: ({
     recording: root.recording,
     replayBuffer: root.replayBuffer,
@@ -36,7 +35,7 @@ NIconButtonHot {
   hot: root.hasActiveOutput
   colorBgHot: Ui.accentBackgroundColor(root.outputState, Color, Color.mSecondary)
   colorFgHot: Ui.accentForegroundColor(root.outputState, Color, Color.mOnSecondary)
-  tooltipText: Ui.controlCenterTooltip(root.pluginApi, root.outputState, root.connected, root.obsRunning, root.primaryActionText)
+  tooltipText: Ui.quickActionTooltip(root.pluginApi, root.outputState, root.connected, root.obsRunning, root.primaryActionText)
 
   NIcon {
     anchors.centerIn: parent
@@ -52,19 +51,12 @@ NIconButtonHot {
     }
   }
 
-  Image {
+  NIcon {
     anchors.centerIn: parent
     visible: root.currentIconName === ""
-    source: root.obsLogoSource
-    sourceSize.width: Math.round(root.width * 0.56)
-    sourceSize.height: Math.round(root.height * 0.56)
-    width: Math.round(root.width * 0.56)
-    height: Math.round(root.height * 0.56)
-    fillMode: Image.PreserveAspectFit
-    smooth: true
-    mipmap: true
-    asynchronous: true
-    opacity: ((root.enabled && root.hovering) || root.pressed) ? 0.96 : 0.9
+    icon: "camera-video"
+    pointSize: Math.max(1, Math.round(root.width * 0.42))
+    color: ((root.enabled && root.hovering) || root.pressed) ? Color.mOnHover : Color.mOnSurfaceVariant
   }
 
   onClicked: {
