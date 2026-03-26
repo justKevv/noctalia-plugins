@@ -3,9 +3,6 @@
     "tooltip": {
       "active": "Mirror is active",
       "inactive": "Mirror displays"
-    },
-    "context": {
-      "widgetSettings": "Widget Settings"
     }
   },
   "main": {
@@ -13,8 +10,7 @@
       "alreadyMirroring": "A mirror session is already active. Stop it before starting another.",
       "selectBothMonitors": "Please select both source and destination monitors.",
       "sameMonitor": "Source and destination must be different monitors.",
-      "unexpectedExit": "wl-mirror exited unexpectedly.",
-      "noCompatibleBackend": "wl-mirror could not start: no compatible backend worked."
+      "unexpectedExit": "wl-mirror exited unexpectedly."
     }
   },
   "panel": {
@@ -33,19 +29,8 @@
       "needTwoMonitors": "Need at least 2 monitors detected to mirror."
     },
     "actions": {
-      "refresh": "Refresh outputs",
       "start": "Start mirror",
       "stop": "Stop mirror"
-    },
-    "discoveryError": {
-      "noBackendFound": "No monitor backend found. Install/use one of: wlr-randr, hyprctl, swaymsg, or niri.",
-      "noDataFromBackend": "No monitor data returned from backend: {backend}",
-      "parseFailed": "Failed to parse monitor list from {backend}.",
-      "noMonitorsDetected": "No monitors detected from backend: {backend}"
     }
-  },
-  "settings": {
-    "description": "Mirror Mirror uses wl-mirror to mirror a source monitor to a destination monitor.",
-    "dependency": "Dependency: wl-mirror"
   }
 }
