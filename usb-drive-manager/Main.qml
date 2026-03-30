@@ -414,6 +414,6 @@ Item {
         if (mountedCount === 0) {
             return pluginApi?.tr("bar.tooltip-empty")
         }
-        return (pluginApi?.tr("bar.tooltip-count") ?? "").replace("%1", mountedCount)
+        return pluginApi?.tr("bar.tooltip-count")?.replace("%1", mountedCount)
     }
 }
