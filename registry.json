@@ -1119,10 +1119,10 @@
     {
       "id": "sys-info-widget",
       "name": "System Info",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "official": false,
       "author": "Simon",
-      "description": "Shows Distribution, Kernel, and Uptime.",
+      "description": "Shows Distribution, Kernel, Uptime and IP addresses.",
       "repository": "https://github.com/noctalia-dev/noctalia-plugins",
       "minNoctaliaVersion": "4.6.6",
       "license": "MIT",
@@ -1130,7 +1130,7 @@
         "Desktop",
         "System"
       ],
-      "lastUpdated": "2026-03-24T10:39:19+01:00"
+      "lastUpdated": "2026-03-30T07:03:01+02:00"
     },
     {
       "id": "tailscale",
