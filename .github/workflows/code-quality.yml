@@ -288,55 +288,55 @@ jobs:
             else
               # Check for required properties
               if [ "$inBarWidget" = true ]; then
-                if echo "$line" | grep -E 'property var pluginApi: null' >/dev/null; then
+                if echo "$line" | grep 'property var pluginApi: null' >/dev/null; then
                   hasPluginApi=true
                 fi
-                if echo "$line" | grep -E 'property ShellScreen screen' >/dev/null; then
+                if echo "$line" | grep 'property ShellScreen screen' >/dev/null; then
                   hasScreen=true
                 fi
-                if echo "$line" | grep -E 'property string widgetId: ""' >/dev/null; then
+                if echo "$line" | grep 'property string widgetId: ""' >/dev/null; then
                   hasWidgetId=true
                 fi
-                if echo "$line" | grep -E 'property string section: ""' >/dev/null; then
+                if echo "$line" | grep 'property string section: ""' >/dev/null; then
                   hasSection=true
                 fi
-                if echo "$line" | grep -E 'property int sectionWidgetIndex: -1' >/dev/null; then
+                if echo "$line" | grep 'property int sectionWidgetIndex: -1' >/dev/null; then
                   hasSectionWidgetIndex=true
                 fi
-                if echo "$line" | grep -E 'property int sectionWidgetsCount: 0' >/dev/null; then
+                if echo "$line" | grep 'property int sectionWidgetsCount: 0' >/dev/null; then
                   hasSectionWidgetsCount=true
                 fi
               fi
 
               if [ "$inDesktopWidget" = true ]; then
-                if echo "$line" | grep -E 'property var pluginApi: null' >/dev/null; then
+                if echo "$line" | grep 'property var pluginApi: null' >/dev/null; then
                   hasPluginApi=true
                 fi
               fi
 
               if [ "$inDesktopWidgetSettings" = true ]; then
-                if echo "$line" | grep -E 'property var pluginApi: null' >/dev/null; then
+                if echo "$line" | grep 'property var pluginApi: null' >/dev/null; then
                   hasPluginApi=true
                 fi
-                if echo "$line" | grep -E 'property var widgetSettings: null' >/dev/null; then
+                if echo "$line" | grep 'property var widgetSettings: null' >/dev/null; then
                   hasWidgetSettings=true
                 fi
               fi
 
               if [ "$inControlCenterWidget" = true ]; then
-                if echo "$line" | grep -E 'property var pluginApi: null' >/dev/null; then
+                if echo "$line" | grep 'property var pluginApi: null' >/dev/null; then
                   hasPluginApi=true
                 fi
-                if echo "$line" | grep -E 'property ShellScreen screen' >/dev/null; then
+                if echo "$line" | grep 'property ShellScreen screen' >/dev/null; then
                   hasScreen=true
                 fi
               fi
 
               if [ "$inLauncherProvider" = true ]; then
-                if echo "$line" | grep -E 'property var pluginApi: null' >/dev/null; then
+                if echo "$line" | grep 'property var pluginApi: null' >/dev/null; then
                   hasPluginApi=true
                 fi
-                if echo "$line" | grep -E 'property var launcher: null' >/dev/null; then
+                if echo "$line" | grep 'property var launcher: null' >/dev/null; then
                   hasLauncher=true
                 fi
                 if echo "$line" | grep -E 'property string name: ".*"' >/dev/null; then
@@ -345,25 +345,25 @@ jobs:
               fi
 
               if [ "$inMain" = true ]; then
-                if echo "$line" | grep -E 'property var pluginApi: null' >/dev/null; then
+                if echo "$line" | grep 'property var pluginApi: null' >/dev/null; then
                   hasPluginApi=true
                 fi
               fi
 
               if [ "$inPanel" = true ]; then
-                if echo "$line" | grep -E 'property var pluginApi: null' >/dev/null; then
+                if echo "$line" | grep 'property var pluginApi: null' >/dev/null; then
                   hasPluginApi=true
                 fi
-                if echo "$line" | grep -E 'readonly property var geometryPlaceholder:' >/dev/null; then
+                if echo "$line" | grep 'readonly property var geometryPlaceholder:' >/dev/null; then
                   hasGeometryPlaceholder=true
                 fi
-                if echo "$line" | grep -E 'readonly property bool allowAttach:' >/dev/null; then
+                if echo "$line" | grep 'readonly property bool allowAttach:' >/dev/null; then
                   hasAllowAttach=true
                 fi
               fi
 
               if [ "$inSettings" = true ]; then
-                if echo "$line" | grep -E 'property var pluginApi: null' >/dev/null; then
+                if echo "$line" | grep 'property var pluginApi: null' >/dev/null; then
                   hasPluginApi=true
                 fi
               fi
